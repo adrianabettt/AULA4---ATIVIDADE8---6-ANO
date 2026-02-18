@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Aula 4 – ATIVIDADE 08</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f0fa; color: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .header { background-color: #4B0082; color: white; width: 100%; max-width: 850px; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
+        .container { background: white; width: 100%; max-width: 850px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        /* Diagrama em Vetor (SVG) */
+        .diagrama-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #fdfaff;
+            border-radius: 10px;
+            border: 1px solid #e0d5f5;
+        }
+
+        .section-title { background: #fdfaff; padding: 10px 20px; border-bottom: 2px solid #eee; font-weight: bold; color: #4B0082; font-size: 18px; margin: -20px -20px 20px -20px; border-radius: 10px 10px 0 0; }
+        .card { border: 2px solid #eee; border-radius: 10px; margin-bottom: 30px; padding: 20px; position: relative; }
+        
+        .grid-questions { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .question-block { margin-bottom: 15px; }
+        .question-block p { font-weight: bold; margin-bottom: 8px; font-size: 14px; color: #555; }
+        
+        select, textarea { padding: 12px; border: 2px solid #ddd; border-radius: 6px; width: 100%; font-size: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; }
+        select.correct, textarea.correct { border-color: #2ecc71; background-color: #e8f8f1; color: #27ae60; font-weight: bold; }
+        
+        .badge { background: #8e44ad; color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; float: right; }
+        
+        button { background-color: #4B0082; color: white; border: none; padding: 15px 50px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; box-shadow: 0 4px #2e0050; transition: 0.2s; }
+        button:hover { background-color: #6a0dad; transform: scale(1.02); }
+
+        #resultado { margin-top: 20px; font-size: 22px; font-weight: bold; text-align: center; display: none; padding: 20px; border-radius: 8px; width: 100%; max-width: 850px; background: #fff; }
+        
+        @media (max-width: 600px) { .grid-questions { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Aula 4 – ATIVIDADE 08</h1>
+    <p>Entendendo o fluxo: Entrada, Processamento e Saída</p>
+</div>
+
+<div class="container">
+    
+
+    <form id="quiz">
+        
+        <div class="card">
+            <span class="badge">3,0 Pontos</span>
+            <div class="section-title">Parte 1 – O Fluxo de Dados</div>
+            
+            <div class="question-block">
+                <p>1) Algoritmo de "Média da Turma":</p>
+                <div class="grid-questions">
+                    <div>
+                        <label><small><b>ENTRADA</b> (Ex: Notas 7.5, 8.2):</small></label>
+                        <select id="q1">
+                            <option value="">Escolha...</option>
+                            <option value="inteiro">Inteiro</option>
+                            <option value="real">Real</option>
+                            <option value="string">String (Texto)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label><small><b>SAÍDA</b> (Resultado da Média):</small></label>
+                        <select id="q2">
+                            <option value="">Escolha...</option>
+                            <option value="inteiro">Inteiro</option>
+                            <option value="real">Real</option>
+                            <option value="string">String (Texto)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>2) Algoritmo "Quem é o mais alto?":</p>
+                <div class="grid-questions">
+                    <div>
+                        <label><small><b>ENTRADA</b> (Ex: Altura 1.85):</small></label>
+                        <select id="q3">
+                            <option value="">Escolha...</option>
+                            <option value="inteiro">Inteiro</option>
+                            <option value="real">Real</option>
+                            <option value="string">String (Texto)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label><small><b>SAÍDA</b> (Nome do Aluno):</small></label>
+                        <select id="q4">
+                            <option value="">Escolha...</option>
+                            <option value="inteiro">Inteiro</option>
+                            <option value="real">Real</option>
+                            <option value="string">String (Texto)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="badge">3,0 Pontos</span>
+            <div class="section-title">Parte 2 – Classificando Coleções</div>
+            <div class="grid-questions">
+                <div class="question-block">
+                    <p>Conjunto A: {10, 25, 30, 42}</p>
+                    <select id="q5">
+                        <option value="">Escolha...</option>
+                        <option value="inteiro">Inteiro</option>
+                        <option value="real">Real</option>
+                        <option value="string">String</option>
+                    </select>
+                </div>
+                <div class="question-block">
+                    <p>Conjunto B: {"Ana", "Carlos"}</p>
+                    <select id="q6">
+                        <option value="">Escolha...</option>
+                        <option value="inteiro">Inteiro</option>
+                        <option value="real">Real</option>
+                        <option value="string">String</option>
+                    </select>
+                </div>
+            </div>
+            <div class="question-block">
+                <p>💡 Por que não podemos misturar 25 (Inteiro) com "Maria" (String) no mesmo conjunto para cálculo?</p>
+                <textarea id="just1" rows="2" placeholder="Explique por que tipos diferentes não se misturam em cálculos..."></textarea>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="badge">2,0 Pontos</span>
+            <div class="section-title">Parte 3 – Depuração (Correção)</div>
+            <div class="question-block">
+                <p>O programador disse: "A variável 'Idade' deve ser do tipo String."</p>
+                <select id="q7">
+                    <option value="">Escolha...</option>
+                    <option value="errado">Errado, idade deve ser Inteiro</option>
+                    <option value="correto">Correto, idade é texto</option>
+                </select>
+            </div>
+            <div class="question-block">
+                <p>O que acontece se o computador tentar somar uma String com um Inteiro?</p>
+                <textarea id="just2" rows="2" placeholder="Ex: 'Maria' + 10..."></textarea>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="badge">2,0 Pontos</span>
+            <div class="section-title">Parte 4 – Justificativa Real</div>
+            <div class="question-block">
+                <p>Por que em um sistema de mercado o "Preço" nunca pode ser do tipo Inteiro?</p>
+                <textarea id="just3" rows="2" placeholder="Pense nos centavos..."></textarea>
+            </div>
+        </div>
+
+        <center><button type="button" onclick="corrigir()">FINALIZAR ATIVIDADE</button></center>
+    </form>
+</div>
+
+<div id="resultado"></div>
+
+<script>
+function corrigir() {
+    let nota = 0;
+
+    // Parte 1 (0.75 cada = 3.0)
+    if (document.getElementById("q1").value === "real") { nota += 0.75; document.getElementById("q1").classList.add('correct'); }
+    else document.getElementById("q1").classList.remove('correct');
+    
+    if (document.getElementById("q2").value === "real") { nota += 0.75; document.getElementById("q2").classList.add('correct'); }
+    else document.getElementById("q2").classList.remove('correct');
+
+    if (document.getElementById("q3").value === "real") { nota += 0.75; document.getElementById("q3").classList.add('correct'); }
+    else document.getElementById("q3").classList.remove('correct');
+
+    if (document.getElementById("q4").value === "string") { nota += 0.75; document.getElementById("q4").classList.add('correct'); }
+    else document.getElementById("q4").classList.remove('correct');
+
+    // Parte 2 (1.0 cada objetivo + 1.0 justificativa = 3.0)
+    if (document.getElementById("q5").value === "inteiro") { nota += 1; document.getElementById("q5").classList.add('correct'); }
+    else document.getElementById("q5").classList.remove('correct');
+
+    if (document.getElementById("q6").value === "string") { nota += 1; document.getElementById("q6").classList.add('correct'); }
+    else document.getElementById("q6").classList.remove('correct');
+
+    if (document.getElementById("just1").value.trim().length >= 10) { nota += 1; document.getElementById("just1").classList.add('correct'); }
+    else document.getElementById("just1").classList.remove('correct');
+
+    // Parte 3 (1.0 objetivo + 1.0 justificativa = 2.0)
+    if (document.getElementById("q7").value === "errado") { nota += 1; document.getElementById("q7").classList.add('correct'); }
+    else document.getElementById("q7").classList.remove('correct');
+
+    if (document.getElementById("just2").value.trim().length >= 10) { nota += 1; document.getElementById("just2").classList.add('correct'); }
+    else document.getElementById("just2").classList.remove('correct');
+
+    // Parte 4 (2.0 pontos)
+    if (document.getElementById("just3").value.trim().length >= 10) { nota += 2; document.getElementById("just3").classList.add('correct'); }
+    else document.getElementById("just3").classList.remove('correct');
+
+    if (nota > 10) nota = 10;
+
+    const resDiv = document.getElementById('resultado');
+    resDiv.style.display = "block";
+    let cor = nota >= 7 ? "#2ecc71" : (nota >= 5 ? "#f1c40f" : "#e67e22");
+    resDiv.style.border = `3px solid ${cor}`;
+    resDiv.style.color = cor;
+    resDiv.innerHTML = `PONTUAÇÃO FINAL: ${nota.toFixed(1)} / 10`;
+    
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
